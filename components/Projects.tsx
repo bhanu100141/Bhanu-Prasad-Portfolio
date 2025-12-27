@@ -61,7 +61,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden">
+    <section id="projects" className="py-20 relative overflow-hidden ml-20">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div

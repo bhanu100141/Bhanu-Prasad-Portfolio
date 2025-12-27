@@ -8,6 +8,30 @@ export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const education = [
+    {
+      degree: "BSC (Computer Science)",
+      institution: "Sri Sai Degree College, Kadapa",
+      period: "2019-2022",
+      cgpa: "9.27",
+      icon: "🎓",
+    },
+    {
+      degree: "Sr. Secondary Education (MPC)",
+      institution: "Sri Venkateswara Junior College, Kadapa",
+      period: "2017-2019",
+      cgpa: "9.09",
+      icon: "📚",
+    },
+    {
+      degree: "Secondary Education (SSC)",
+      institution: "Z P High School, Kadapa",
+      period: "2014-2017",
+      cgpa: "8.00",
+      icon: "🏫",
+    },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,7 +55,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
+    <section id="about" className="py-20 relative overflow-hidden ml-20">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -57,71 +81,124 @@ export default function About() {
       >
         <motion.h2
           variants={itemVariants}
-          className="text-5xl md:text-6xl font-bold text-center gradient-text glow-text mb-12"
+          className="text-5xl md:text-6xl font-bold text-center gradient-text glow-text mb-16"
         >
           About Me
         </motion.h2>
-        <motion.div
-          variants={itemVariants}
-          className="max-w-4xl mx-auto glass glass-hover p-8 md:p-12 rounded-2xl"
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: "100%" } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 mb-8 rounded-full"
-          />
 
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6"
-          >
-            I'm a passionate{" "}
-            <span className="gradient-text font-semibold">Full Stack Developer</span>{" "}
-            with expertise in building modern web applications. I love creating
-            elegant solutions to complex problems and continuously learning new
-            technologies to stay at the forefront of web development.
-          </motion.p>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6"
-          >
-            With a strong foundation in both{" "}
-            <span className="text-purple-400 font-semibold">frontend</span> and{" "}
-            <span className="text-pink-400 font-semibold">backend</span> development,
-            I specialize in creating responsive, user-friendly applications that
-            deliver exceptional user experiences. My approach combines technical
-            expertise with creative problem-solving.
-          </motion.p>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-300 leading-relaxed"
-          >
-            When I'm not coding, I enjoy exploring new technologies, contributing
-            to open-source projects, and sharing knowledge with the developer community.
-          </motion.p>
-
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Bio Section */}
           <motion.div
             variants={itemVariants}
-            className="mt-8 flex flex-wrap gap-3"
+            className="glass glass-hover p-8 md:p-12 rounded-2xl"
           >
-            {["Problem Solver", "Quick Learner", "Team Player", "Creative Thinker"].map(
-              (trait, index) => (
-                <motion.span
-                  key={trait}
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1 } : { scale: 0 }}
-                  transition={{ delay: 1 + index * 0.1, type: "spring" }}
-                  className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-gray-300 text-sm font-medium"
-                >
-                  {trait}
-                </motion.span>
-              )
-            )}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={isInView ? { width: "100%" } : { width: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 mb-8 rounded-full"
+            />
+
+            <h3 className="text-3xl font-bold gradient-text mb-6">
+              Frontend Developer
+            </h3>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6"
+            >
+              I'm a passionate{" "}
+              <span className="gradient-text font-semibold">Frontend Developer</span>{" "}
+              with expertise in building modern, responsive web applications. I specialize
+              in creating interactive user interfaces using cutting-edge technologies.
+            </motion.p>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6"
+            >
+              With a strong foundation in{" "}
+              <span className="text-purple-400 font-semibold">HTML, CSS, JavaScript</span>,
+              and modern frameworks like{" "}
+              <span className="text-pink-400 font-semibold">React.js</span>,
+              I bring ideas to life through clean, efficient code and beautiful design.
+            </motion.p>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-300 leading-relaxed"
+            >
+              I'm always eager to learn new technologies and collaborate on exciting
+              projects that make a difference.
+            </motion.p>
+
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              {["Problem Solver", "Quick Learner", "Team Player", "Detail-Oriented"].map(
+                (trait, index) => (
+                  <motion.span
+                    key={trait}
+                    initial={{ scale: 0 }}
+                    animate={isInView ? { scale: 1 } : { scale: 0 }}
+                    transition={{ delay: 1 + index * 0.1, type: "spring" }}
+                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-gray-300 text-sm font-medium"
+                  >
+                    {trait}
+                  </motion.span>
+                )
+              )}
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Education Section */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <h3 className="text-3xl font-bold gradient-text mb-8">Education</h3>
+
+            {education.map((edu, index) => (
+              <motion.div
+                key={index}
+                initial={{ x: 50, opacity: 0 }}
+                animate={isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
+                transition={{ delay: 0.5 + index * 0.2 }}
+                whileHover={{ scale: 1.02, x: 5 }}
+                className="glass glass-hover p-6 rounded-xl relative overflow-hidden group"
+              >
+                {/* Icon */}
+                <motion.div
+                  className="absolute top-6 right-6 text-5xl opacity-20 group-hover:opacity-30 transition-opacity"
+                  whileHover={{ rotate: 360, scale: 1.2 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {edu.icon}
+                </motion.div>
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-2">
+                    <h4 className="text-xl font-semibold text-white group-hover:gradient-text transition-all">
+                      {edu.degree}
+                    </h4>
+                    <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium">
+                      CGPA: {edu.cgpa}
+                    </span>
+                  </div>
+
+                  <p className="text-gray-300 mb-2">{edu.institution}</p>
+                  <p className="text-gray-400 text-sm">{edu.period}</p>
+                </div>
+
+                {/* Animated bottom border */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

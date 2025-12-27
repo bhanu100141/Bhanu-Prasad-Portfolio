@@ -48,20 +48,20 @@ export default function Contact() {
     {
       name: "LinkedIn",
       icon: "💼",
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/bhanu-prasad-117152267",
       color: "from-blue-500 to-blue-700",
-    },
-    {
-      name: "Twitter",
-      icon: "🐦",
-      url: "https://twitter.com",
-      color: "from-sky-400 to-blue-500",
     },
     {
       name: "Email",
       icon: "📧",
-      url: "mailto:your.email@example.com",
+      url: "mailto:bhanu100141@gmail.com",
       color: "from-purple-500 to-pink-500",
+    },
+    {
+      name: "Phone",
+      icon: "📱",
+      url: "tel:+919392609951",
+      color: "from-green-500 to-emerald-500",
     },
   ];
 
@@ -88,7 +88,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-20 relative overflow-hidden ml-20">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -224,14 +224,21 @@ export default function Contact() {
                   className="flex items-center gap-3 text-gray-300"
                 >
                   <span className="text-2xl">📍</span>
-                  <span>Location, Country</span>
+                  <span>Kadapa, Andhra Pradesh, India</span>
                 </motion.div>
                 <motion.div
                   whileHover={{ x: 5 }}
                   className="flex items-center gap-3 text-gray-300"
                 >
                   <span className="text-2xl">⏰</span>
-                  <span>Available for freelance</span>
+                  <span>Available for opportunities</span>
+                </motion.div>
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  className="flex items-center gap-3 text-gray-300"
+                >
+                  <span className="text-2xl">📱</span>
+                  <span>+91 9392609951</span>
                 </motion.div>
               </div>
             </div>
@@ -287,7 +294,7 @@ export default function Contact() {
           <p>
             Built with 💜 using Next.js, TypeScript & Framer Motion
           </p>
-          <p className="mt-2">© 2024 Bhanu Prasad. All rights reserved.</p>
+          <p className="mt-2">© 2024 Bhanuprasad Vepakayala. All rights reserved.</p>
         </motion.div>
       </motion.div>
     </section>

@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden ml-20"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -63,117 +63,124 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10"
+        className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 relative z-10"
       >
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Profile Image */}
           <motion.div
             variants={itemVariants}
-            className="flex justify-center mb-8"
+            className="flex justify-center lg:justify-start"
           >
             <motion.div
               whileHover={{ scale: 1.05, rotate: 5 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full blur-xl opacity-75 animate-pulse" />
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden glass p-2 glow">
-                <Image
-                  src="/profile-placeholder.svg"
-                  alt="Bhanu Prasad"
-                  width={256}
-                  height={256}
-                  className="rounded-full object-cover"
-                  priority
-                />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full blur-2xl opacity-75 animate-pulse" />
+              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden glass p-3 glow">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-purple-400/30">
+                  <Image
+                    src="/profile-placeholder.svg"
+                    alt="Bhanuprasad Vepakayala"
+                    width={400}
+                    height={400}
+                    className="rounded-full object-cover"
+                    priority
+                  />
+                </div>
               </div>
             </motion.div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="space-y-2">
-            <h2 className="text-2xl md:text-3xl text-gray-300 font-light">
-              Hi, I'm
-            </h2>
-          </motion.div>
+          {/* Content */}
+          <div className="space-y-6 text-center lg:text-left">
+            <motion.div variants={itemVariants} className="space-y-2">
+              <h2 className="text-xl md:text-2xl text-gray-400 font-light tracking-wide">
+                HI THERE! I'M
+              </h2>
+            </motion.div>
 
-          <motion.h1
-            variants={itemVariants}
-            className="text-6xl md:text-8xl font-bold gradient-text glow-text"
-          >
-            Bhanu Prasad
-          </motion.h1>
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl md:text-7xl font-bold"
+            >
+              <span className="gradient-text glow-text">BHANUPRASAD</span>
+              <br />
+              <span className="text-white">VEPAKAYALA</span>
+            </motion.h1>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-2 text-xl md:text-2xl"
-          >
-            {["Full", "Stack", "Developer"].map((word, index) => (
-              <motion.span
-                key={word}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 + index * 0.2 }}
-                className="text-gray-300 glass px-4 py-2 rounded-lg"
+            <motion.div
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-gray-300"
+            >
+              A <span className="gradient-text font-semibold">Frontend Developer</span>{" "}
+              passionate about creating interactive applications and experiences on the web.
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="flex gap-6 justify-center lg:justify-start flex-wrap pt-6"
+            >
+              {/* Resume Button */}
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(147, 51, 234, 0.6)" }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-full font-medium text-lg shadow-lg"
               >
-                {word}
-              </motion.span>
-            ))}
-          </motion.div>
+                Resumé
+              </motion.a>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
-          >
-            Building innovative web solutions with modern technologies.
-            Passionate about creating elegant, user-friendly applications
-            that make a difference.
-          </motion.p>
+              {/* Social Icons */}
+              <div className="flex gap-4 items-center">
+                <motion.a
+                  href="https://www.linkedin.com/in/bhanu-prasad-117152267"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-purple-500/20 transition-colors"
+                  title="LinkedIn"
+                >
+                  💼
+                </motion.a>
+                <motion.a
+                  href="https://github.com/bhanu100141"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-purple-500/20 transition-colors"
+                  title="GitHub"
+                >
+                  🐙
+                </motion.a>
+                <motion.a
+                  href="mailto:bhanu100141@gmail.com"
+                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-purple-500/20 transition-colors"
+                  title="Email"
+                >
+                  📧
+                </motion.a>
+              </div>
+            </motion.div>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex gap-4 justify-center flex-wrap pt-8"
-          >
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(102, 126, 234, 0.6)" }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 animated-gradient text-white rounded-lg font-medium glow"
+            {/* Contact Info */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col gap-2 pt-4 text-gray-400"
             >
-              View My Work
-            </motion.a>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 glass glass-hover rounded-lg font-medium text-white"
-            >
-              Contact Me
-            </motion.a>
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 2,
-              duration: 1,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            className="pt-16"
-          >
-            <svg
-              className="w-6 h-6 mx-auto text-gray-400"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </motion.div>
+              <div className="flex items-center gap-2 justify-center lg:justify-start">
+                <span>📧</span>
+                <span>bhanu100141@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center lg:justify-start">
+                <span>📱</span>
+                <span>+91 9392609951</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>

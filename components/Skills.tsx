@@ -12,22 +12,22 @@ export default function Skills() {
     {
       title: "Frontend",
       icon: "💻",
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS"],
+      skills: ["HTML", "CSS", "Bootstrap", "JavaScript", "React.js"],
     },
     {
       title: "Backend",
       icon: "⚙️",
-      skills: ["Node.js", "Express", "Python", "REST APIs", "GraphQL"],
+      skills: ["Python", "Express", "Node.js"],
     },
     {
       title: "Database",
       icon: "🗄️",
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
+      skills: ["SQLite"],
     },
     {
-      title: "Tools & Others",
+      title: "Other Skills",
       icon: "🛠️",
-      skills: ["Git", "Docker", "AWS", "CI/CD", "Agile"],
+      skills: ["Flexbox", "Git", "OOPs", "Responsive Design"],
     },
   ];
 
@@ -54,7 +54,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
+    <section id="skills" className="py-20 relative overflow-hidden ml-20">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
