@@ -59,7 +59,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden ml-20 bg-white">
+    <section id="projects" className="py-20 relative overflow-hidden ml-20 bg-black">
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -69,7 +69,7 @@ export default function Projects() {
       >
         <motion.h2
           variants={cardVariants}
-          className="text-5xl md:text-6xl font-bold text-center text-black mb-16"
+          className="text-5xl md:text-6xl font-bold text-center text-white mb-16"
         >
           Featured Projects
         </motion.h2>
@@ -80,7 +80,7 @@ export default function Projects() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -10 }}
-              className="bg-gray-50 hover:bg-white rounded-2xl overflow-hidden group relative border border-gray-200 shadow-md hover:shadow-2xl transition-all"
+              className="bg-white/5 backdrop-blur-sm hover:bg-white/10 rounded-2xl overflow-hidden group relative border border-white/10 shadow-xl hover:shadow-2xl transition-all"
             >
               <div className="p-6 md:p-8 relative z-10">
                 {/* Project number */}
@@ -88,16 +88,16 @@ export default function Projects() {
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: index * 0.2, type: "spring" }}
-                  className="text-6xl font-bold text-gray-200 mb-4"
+                  className="text-6xl font-bold text-white/10 mb-4"
                 >
                   0{index + 1}
                 </motion.div>
 
-                <h3 className="text-2xl md:text-3xl font-semibold text-black mb-4 group-hover:text-gray-800 transition-all">
+                <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 group-hover:text-white/90 transition-all">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="text-white/70 mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -116,7 +116,7 @@ export default function Projects() {
                         delay: index * 0.2 + techIndex * 0.1,
                         type: "spring",
                       }}
-                      className="px-3 py-1 bg-black/10 border border-black/20 rounded-full text-sm text-gray-800 font-medium hover:bg-black/20 transition-colors"
+                      className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-sm text-white font-medium hover:bg-white/20 transition-colors"
                     >
                       {tech}
                     </motion.span>
@@ -129,7 +129,7 @@ export default function Projects() {
                     href={project.github}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors group/link font-medium"
+                    className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group/link font-medium"
                   >
                     <FaGithub className="text-xl" />
                     <span className="group-hover/link:underline">Code</span>
@@ -139,7 +139,7 @@ export default function Projects() {
                     href={project.demo}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors group/link font-medium"
+                    className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group/link font-medium"
                   >
                     <FaExternalLinkAlt className="text-lg" />
                     <span className="group-hover/link:underline">Demo</span>
@@ -161,7 +161,7 @@ export default function Projects() {
             href="#"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block px-8 py-4 bg-black text-white rounded-lg font-medium hover:bg-gray-900 transition-colors shadow-md"
+            className="inline-block px-8 py-4 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-colors shadow-md"
           >
             View All Projects →
           </motion.a>

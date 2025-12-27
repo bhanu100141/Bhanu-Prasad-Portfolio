@@ -3,132 +3,134 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { FaLaptopCode, FaServer, FaDatabase, FaTools } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaBootstrap,
+  FaJs,
+  FaReact,
+  FaPython,
+  FaNode,
+  FaDatabase,
+  FaGitAlt,
+  FaCode
+} from "react-icons/fa";
+import { SiExpress, SiSqlite } from "react-icons/si";
 
 export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const skillCategories = [
-    {
-      title: "Frontend",
-      icon: FaLaptopCode,
-      skills: ["HTML", "CSS", "Bootstrap", "JavaScript", "React.js"],
-    },
-    {
-      title: "Backend",
-      icon: FaServer,
-      skills: ["Python", "Express", "Node.js"],
-    },
-    {
-      title: "Database",
-      icon: FaDatabase,
-      skills: ["SQLite"],
-    },
-    {
-      title: "Other Skills",
-      icon: FaTools,
-      skills: ["Flexbox", "Git", "OOPs", "Responsive Design"],
-    },
+  const skills = [
+    { name: "HTML", icon: FaHtml5, color: "#E34F26" },
+    { name: "CSS", icon: FaCss3Alt, color: "#1572B6" },
+    { name: "Bootstrap", icon: FaBootstrap, color: "#7952B3" },
+    { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
+    { name: "React.js", icon: FaReact, color: "#61DAFB" },
+    { name: "Python", icon: FaPython, color: "#3776AB" },
+    { name: "Node.js", icon: FaNode, color: "#339933" },
+    { name: "Express", icon: SiExpress, color: "#000000" },
+    { name: "SQLite", icon: SiSqlite, color: "#003B57" },
+    { name: "Git", icon: FaGitAlt, color: "#F05032" },
+    { name: "Flexbox", icon: FaCode, color: "#1572B6" },
+    { name: "OOPs", icon: FaCode, color: "#3776AB" },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+  // Duplicate skills array for seamless infinite loop
+  const duplicatedSkills = [...skills, ...skills, ...skills];
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden ml-20 bg-gray-50">
+    <section id="skills" className="py-20 relative overflow-hidden ml-20 bg-black">
       <motion.div
         ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
       >
         <motion.h2
-          variants={cardVariants}
-          className="text-5xl md:text-6xl font-bold text-center text-black mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl md:text-6xl font-bold text-center text-white mb-16"
         >
           Skills & Expertise
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {skillCategories.map((category, categoryIndex) => {
-            const Icon = category.icon;
-            return (
-              <motion.div
-                key={category.title}
-                variants={cardVariants}
-                whileHover={{
-                  scale: 1.05,
-                  y: -5,
-                }}
-                className="bg-white hover:bg-gray-50 p-6 md:p-8 rounded-2xl relative group border border-gray-200 shadow-md hover:shadow-xl transition-all"
-              >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-black/0 to-gray-800/0 group-hover:from-black/5 group-hover:to-gray-800/5 transition-all duration-300" />
+        {/* Infinite Scrolling Skills Slider */}
+        <div className="relative">
+          {/* Gradient overlays for fade effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
 
-                <div className="relative z-10">
+          {/* Scrolling container */}
+          <div className="overflow-hidden py-8">
+            <motion.div
+              className="flex gap-8"
+              animate={{
+                x: [0, -1920], // Adjust based on total width
+              }}
+              transition={{
+                x: {
+                  duration: 30,
+                  repeat: Infinity,
+                  ease: "linear",
+                },
+              }}
+            >
+              {duplicatedSkills.map((skill, index) => {
+                const Icon = skill.icon;
+                return (
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : { scale: 0 }}
-                    transition={{
-                      delay: categoryIndex * 0.2,
-                      type: "spring",
-                      stiffness: 200,
-                    }}
-                    className="text-5xl mb-4 text-black"
+                    key={`${skill.name}-${index}`}
+                    whileHover={{ scale: 1.1, y: -10 }}
+                    className="flex-shrink-0 w-40 h-40 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/10 transition-all group"
                   >
-                    <Icon />
+                    <motion.div
+                      className="text-6xl"
+                      style={{ color: skill.color }}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Icon />
+                    </motion.div>
+                    <p className="text-white font-medium text-center px-2">
+                      {skill.name}
+                    </p>
                   </motion.div>
-
-                  <h3 className="text-2xl font-semibold text-black mb-6">
-                    {category.title}
-                  </h3>
-
-                  <ul className="space-y-3">
-                    {category.skills.map((skill, skillIndex) => (
-                      <motion.li
-                        key={skill}
-                        initial={{ x: -20, opacity: 0 }}
-                        animate={isInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
-                        transition={{
-                          delay: categoryIndex * 0.2 + skillIndex * 0.1,
-                        }}
-                        className="text-gray-700 flex items-center group/item"
-                      >
-                        <motion.span
-                          className="w-2 h-2 bg-gradient-to-r from-black to-gray-600 rounded-full mr-3"
-                          whileHover={{ scale: 1.5 }}
-                        />
-                        <span className="group-hover/item:text-black transition-colors font-medium">
-                          {skill}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            );
-          })}
+                );
+              })}
+            </motion.div>
+          </div>
         </div>
+
+        {/* Additional Skills Categories Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all">
+            <h3 className="text-2xl font-bold text-white mb-4">Frontend</h3>
+            <p className="text-white/60 leading-relaxed">
+              Crafting beautiful, responsive user interfaces with modern frameworks and best practices.
+            </p>
+          </div>
+
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all">
+            <h3 className="text-2xl font-bold text-white mb-4">Backend</h3>
+            <p className="text-white/60 leading-relaxed">
+              Building robust server-side applications with efficient data handling and API design.
+            </p>
+          </div>
+
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all">
+            <h3 className="text-2xl font-bold text-white mb-4">Database</h3>
+            <p className="text-white/60 leading-relaxed">
+              Managing and optimizing data storage with relational database systems.
+            </p>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

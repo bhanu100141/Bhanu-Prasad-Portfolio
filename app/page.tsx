@@ -3,12 +3,12 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
-import Sidebar from "@/components/Sidebar";
+import TopNav from "@/components/TopNav";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Sidebar />
+    <main className="min-h-screen bg-black">
+      <TopNav />
       <Hero />
       <About />
       <Skills />
