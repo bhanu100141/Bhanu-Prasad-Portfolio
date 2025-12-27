@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -41,27 +42,23 @@ export default function Contact() {
   const socialLinks = [
     {
       name: "GitHub",
-      icon: "🐙",
+      icon: FaGithub,
       url: "https://github.com/bhanu100141",
-      color: "from-white to-gray-400",
     },
     {
       name: "LinkedIn",
-      icon: "💼",
+      icon: FaLinkedin,
       url: "https://www.linkedin.com/in/bhanu-prasad-117152267",
-      color: "from-white to-gray-400",
     },
     {
       name: "Email",
-      icon: "📧",
+      icon: FaEnvelope,
       url: "mailto:bhanu100141@gmail.com",
-      color: "from-white to-gray-400",
     },
     {
       name: "Phone",
-      icon: "📱",
+      icon: FaPhone,
       url: "tel:+919392609951",
-      color: "from-white to-gray-400",
     },
   ];
 
@@ -88,23 +85,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden ml-20">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl"
-        />
-      </div>
-
+    <section id="contact" className="py-20 relative overflow-hidden ml-20 bg-gray-50">
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -114,22 +95,22 @@ export default function Contact() {
       >
         <motion.h2
           variants={itemVariants}
-          className="text-5xl md:text-6xl font-bold text-center gradient-text glow-text mb-16"
+          className="text-5xl md:text-6xl font-bold text-center text-black mb-16"
         >
           Get In Touch
         </motion.h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <motion.div variants={itemVariants} className="glass glass-hover p-8 rounded-2xl">
-            <h3 className="text-2xl font-semibold text-white mb-6">
+          <motion.div variants={itemVariants} className="bg-white p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition-shadow">
+            <h3 className="text-2xl font-semibold text-black mb-6">
               Send me a message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <motion.div whileFocus={{ scale: 1.02 }}>
+              <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-300 mb-2"
+                  className="block text-sm font-medium text-gray-700 mb-2"
                 >
                   Name
                 </label>
@@ -140,15 +121,15 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-gray-400 transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent text-black placeholder-gray-400 transition-all"
                   placeholder="Your name"
                 />
-              </motion.div>
+              </div>
 
-              <motion.div whileFocus={{ scale: 1.02 }}>
+              <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-300 mb-2"
+                  className="block text-sm font-medium text-gray-700 mb-2"
                 >
                   Email
                 </label>
@@ -159,15 +140,15 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-gray-400 transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent text-black placeholder-gray-400 transition-all"
                   placeholder="your.email@example.com"
                 />
-              </motion.div>
+              </div>
 
-              <motion.div whileFocus={{ scale: 1.02 }}>
+              <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-300 mb-2"
+                  className="block text-sm font-medium text-gray-700 mb-2"
                 >
                   Message
                 </label>
@@ -178,17 +159,17 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-gray-400 transition-all resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent text-black placeholder-gray-400 transition-all resize-none"
                   placeholder="Your message..."
                 />
-              </motion.div>
+              </div>
 
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full px-8 py-4 bg-white text-black rounded-lg font-medium glow disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-200 transition-colors"
+                className="w-full px-8 py-4 bg-black text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-900 transition-colors shadow-md"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">
@@ -209,11 +190,11 @@ export default function Contact() {
 
           {/* Contact Info & Social Links */}
           <motion.div variants={itemVariants} className="space-y-8">
-            <div className="glass glass-hover p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold text-white mb-6">
+            <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition-shadow">
+              <h3 className="text-2xl font-semibold text-black mb-6">
                 Let's connect
               </h3>
-              <p className="text-gray-300 leading-relaxed mb-6">
+              <p className="text-gray-700 leading-relaxed mb-6">
                 I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your visions. Feel free to reach out!
               </p>
@@ -221,23 +202,23 @@ export default function Contact() {
               <div className="space-y-4">
                 <motion.div
                   whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 text-gray-300"
+                  className="flex items-center gap-3 text-gray-700"
                 >
-                  <span className="text-2xl">📍</span>
+                  <FaMapMarkerAlt className="text-xl text-black" />
                   <span>Kadapa, Andhra Pradesh, India</span>
                 </motion.div>
                 <motion.div
                   whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 text-gray-300"
+                  className="flex items-center gap-3 text-gray-700"
                 >
-                  <span className="text-2xl">⏰</span>
+                  <FaClock className="text-xl text-black" />
                   <span>Available for opportunities</span>
                 </motion.div>
                 <motion.div
                   whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 text-gray-300"
+                  className="flex items-center gap-3 text-gray-700"
                 >
-                  <span className="text-2xl">📱</span>
+                  <FaPhone className="text-xl text-black" />
                   <span>+91 9392609951</span>
                 </motion.div>
               </div>
@@ -245,35 +226,38 @@ export default function Contact() {
 
             {/* Social Links */}
             <div className="grid grid-cols-2 gap-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
-                  transition={{
-                    delay: 0.8 + index * 0.1,
-                    type: "spring",
-                    stiffness: 200,
-                  }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="glass glass-hover p-6 rounded-xl text-center group"
-                >
-                  <motion.div
-                    className="text-4xl mb-2"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
+              {socialLinks.map((link, index) => {
+                const Icon = link.icon;
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+                    transition={{
+                      delay: 0.8 + index * 0.1,
+                      type: "spring",
+                      stiffness: 200,
+                    }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-white hover:bg-gray-50 p-6 rounded-xl text-center group border border-gray-200 shadow-md hover:shadow-xl transition-all"
                   >
-                    {link.icon}
-                  </motion.div>
-                  <p className="text-white font-medium group-hover:gradient-text transition-all">
-                    {link.name}
-                  </p>
-                </motion.a>
-              ))}
+                    <motion.div
+                      className="text-4xl mb-2 text-black"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Icon className="mx-auto" />
+                    </motion.div>
+                    <p className="text-black font-medium group-hover:text-gray-800 transition-all">
+                      {link.name}
+                    </p>
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
         </div>
@@ -283,10 +267,10 @@ export default function Contact() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 1.5 }}
-          className="mt-20 text-center text-gray-400"
+          className="mt-20 text-center text-gray-600"
         >
           <motion.div
-            className="h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"
+            className="h-px w-32 bg-gradient-to-r from-transparent via-black to-transparent mx-auto mb-6"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ delay: 1.3, duration: 0.8 }}

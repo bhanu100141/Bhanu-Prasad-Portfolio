@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 export default function Projects() {
   const ref = useRef(null);
@@ -16,7 +17,6 @@ export default function Projects() {
       technologies: ["Next.js", "TypeScript", "MongoDB", "Stripe"],
       github: "#",
       demo: "#",
-      gradient: "from-white to-gray-400",
     },
     {
       title: "Social Media Dashboard",
@@ -25,7 +25,6 @@ export default function Projects() {
       technologies: ["React", "Node.js", "PostgreSQL", "Chart.js"],
       github: "#",
       demo: "#",
-      gradient: "from-white to-gray-400",
     },
     {
       title: "AI Task Manager",
@@ -34,7 +33,6 @@ export default function Projects() {
       technologies: ["Next.js", "Express", "Socket.io", "OpenAI"],
       github: "#",
       demo: "#",
-      gradient: "from-white to-gray-400",
     },
   ];
 
@@ -61,23 +59,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden ml-20">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, 180, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"
-        />
-      </div>
-
+    <section id="projects" className="py-20 relative overflow-hidden ml-20 bg-white">
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -87,7 +69,7 @@ export default function Projects() {
       >
         <motion.h2
           variants={cardVariants}
-          className="text-5xl md:text-6xl font-bold text-center gradient-text glow-text mb-16"
+          className="text-5xl md:text-6xl font-bold text-center text-black mb-16"
         >
           Featured Projects
         </motion.h2>
@@ -98,37 +80,24 @@ export default function Projects() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -10 }}
-              className="glass rounded-2xl overflow-hidden group relative"
+              className="bg-gray-50 hover:bg-white rounded-2xl overflow-hidden group relative border border-gray-200 shadow-md hover:shadow-2xl transition-all"
             >
-              {/* Gradient overlay on hover */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-              />
-
-              {/* Animated border */}
-              <motion.div
-                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-20`}
-                initial={{ scale: 0.8 }}
-                whileHover={{ scale: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-
               <div className="p-6 md:p-8 relative z-10">
                 {/* Project number */}
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: index * 0.2, type: "spring" }}
-                  className={`text-6xl font-bold bg-gradient-to-br ${project.gradient} bg-clip-text text-transparent opacity-20 mb-4`}
+                  className="text-6xl font-bold text-gray-200 mb-4"
                 >
                   0{index + 1}
                 </motion.div>
 
-                <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 group-hover:gradient-text transition-all">
+                <h3 className="text-2xl md:text-3xl font-semibold text-black mb-4 group-hover:text-gray-800 transition-all">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-300 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -147,7 +116,7 @@ export default function Projects() {
                         delay: index * 0.2 + techIndex * 0.1,
                         type: "spring",
                       }}
-                      className={`px-3 py-1 bg-gradient-to-r ${project.gradient} bg-opacity-20 border border-white/20 rounded-full text-sm text-gray-200`}
+                      className="px-3 py-1 bg-black/10 border border-black/20 rounded-full text-sm text-gray-800 font-medium hover:bg-black/20 transition-colors"
                     >
                       {tech}
                     </motion.span>
@@ -160,15 +129,9 @@ export default function Projects() {
                     href={project.github}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group/link"
+                    className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors group/link font-medium"
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
+                    <FaGithub className="text-xl" />
                     <span className="group-hover/link:underline">Code</span>
                   </motion.a>
 
@@ -176,21 +139,9 @@ export default function Projects() {
                     href={project.demo}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group/link"
+                    className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors group/link font-medium"
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
+                    <FaExternalLinkAlt className="text-lg" />
                     <span className="group-hover/link:underline">Demo</span>
                   </motion.a>
                 </div>
@@ -210,7 +161,7 @@ export default function Projects() {
             href="#"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block px-8 py-4 glass glass-hover rounded-lg font-medium text-white"
+            className="inline-block px-8 py-4 bg-black text-white rounded-lg font-medium hover:bg-gray-900 transition-colors shadow-md"
           >
             View All Projects →
           </motion.a>
