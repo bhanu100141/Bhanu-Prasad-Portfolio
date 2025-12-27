@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Projects() {
+  const { theme } = useTheme();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -59,7 +61,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden ml-20 bg-black">
+    <section id="projects" className={`py-12 md:py-20 relative overflow-hidden ml-0 lg:ml-20 px-4 md:px-0 transition-colors ${theme === "dark" ? "bg-black" : "bg-white"}`}>
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -69,18 +71,129 @@ export default function Projects() {
       >
         <motion.h2
           variants={cardVariants}
-          className="text-5xl md:text-6xl font-bold text-center text-white mb-16"
+          className={`text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 ${theme === "dark" ? "text-white" : "text-black"}`}
         >
           Featured Projects
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Mobile - Horizontal Scroll */}
+        <div className="md:hidden overflow-x-auto overflow-y-visible pb-4 -mx-4 px-4 scrollbar-hide">
+          <div className="flex gap-4 min-w-min">
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className={`flex-shrink-0 w-[92vw] max-w-md min-h-[420px] rounded-2xl overflow-hidden group relative shadow-xl ${
+                  theme === "dark"
+                    ? "bg-white/5 backdrop-blur-sm border border-white/10"
+                    : "bg-gray-50 border border-gray-200"
+                }`}
+              >
+                <div className="p-8 relative z-10 flex flex-col justify-between h-full">
+                  <div>
+                    {/* Project number */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={isInView ? { scale: 1 } : { scale: 0 }}
+                      transition={{ delay: index * 0.2, type: "spring" }}
+                      className={`text-6xl font-bold mb-4 ${
+                        theme === "dark" ? "text-white/10" : "text-gray-200"
+                      }`}
+                    >
+                      0{index + 1}
+                    </motion.div>
+
+                    <h3 className={`text-2xl font-semibold mb-4 transition-all ${
+                      theme === "dark"
+                        ? "text-white group-hover:text-white/90"
+                        : "text-black group-hover:text-gray-800"
+                    }`}>
+                      {project.title}
+                    </h3>
+
+                    <p className={`text-base mb-6 leading-relaxed ${
+                      theme === "dark" ? "text-white/70" : "text-gray-700"
+                    }`}>
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.technologies.map((tech, techIndex) => (
+                        <motion.span
+                          key={tech}
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={
+                            isInView
+                              ? { scale: 1, rotate: 0 }
+                              : { scale: 0, rotate: -180 }
+                          }
+                          transition={{
+                            delay: index * 0.2 + techIndex * 0.1,
+                            type: "spring",
+                          }}
+                          className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                            theme === "dark"
+                              ? "bg-white/10 border border-white/20 text-white"
+                              : "bg-gray-200 border border-gray-300 text-black"
+                          }`}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
+
+                    {/* Links */}
+                    <div className="flex gap-6">
+                      <motion.a
+                        href={project.github}
+                        whileHover={{ scale: 1.05, x: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`flex items-center gap-2 transition-colors group/link font-medium ${
+                          theme === "dark"
+                            ? "text-white/70 hover:text-white"
+                            : "text-gray-700 hover:text-black"
+                        }`}
+                      >
+                        <FaGithub className="text-xl" />
+                        <span className="group-hover/link:underline">Code</span>
+                      </motion.a>
+
+                      <motion.a
+                        href={project.demo}
+                        whileHover={{ scale: 1.05, x: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`flex items-center gap-2 transition-colors group/link font-medium ${
+                          theme === "dark"
+                            ? "text-white/70 hover:text-white"
+                            : "text-gray-700 hover:text-black"
+                        }`}
+                      >
+                        <FaExternalLinkAlt className="text-lg" />
+                        <span className="group-hover/link:underline">Demo</span>
+                      </motion.a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop - Grid */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
               whileHover={{ y: -10 }}
-              className="bg-white/5 backdrop-blur-sm hover:bg-white/10 rounded-2xl overflow-hidden group relative border border-white/10 shadow-xl hover:shadow-2xl transition-all"
+              className={`rounded-2xl overflow-hidden group relative shadow-xl hover:shadow-2xl transition-all ${
+                theme === "dark"
+                  ? "bg-white/5 backdrop-blur-sm hover:bg-white/10 border border-white/10"
+                  : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
+              }`}
             >
               <div className="p-6 md:p-8 relative z-10">
                 {/* Project number */}
@@ -88,16 +201,24 @@ export default function Projects() {
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: index * 0.2, type: "spring" }}
-                  className="text-6xl font-bold text-white/10 mb-4"
+                  className={`text-6xl font-bold mb-4 ${
+                    theme === "dark" ? "text-white/10" : "text-gray-200"
+                  }`}
                 >
                   0{index + 1}
                 </motion.div>
 
-                <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 group-hover:text-white/90 transition-all">
+                <h3 className={`text-2xl md:text-3xl font-semibold mb-4 transition-all ${
+                  theme === "dark"
+                    ? "text-white group-hover:text-white/90"
+                    : "text-black group-hover:text-gray-800"
+                }`}>
                   {project.title}
                 </h3>
 
-                <p className="text-white/70 mb-6 leading-relaxed">
+                <p className={`mb-6 leading-relaxed ${
+                  theme === "dark" ? "text-white/70" : "text-gray-700"
+                }`}>
                   {project.description}
                 </p>
 
@@ -116,7 +237,11 @@ export default function Projects() {
                         delay: index * 0.2 + techIndex * 0.1,
                         type: "spring",
                       }}
-                      className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-sm text-white font-medium hover:bg-white/20 transition-colors"
+                      className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                        theme === "dark"
+                          ? "bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                          : "bg-gray-200 border border-gray-300 text-black hover:bg-gray-300"
+                      }`}
                     >
                       {tech}
                     </motion.span>
@@ -129,7 +254,11 @@ export default function Projects() {
                     href={project.github}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group/link font-medium"
+                    className={`flex items-center gap-2 transition-colors group/link font-medium ${
+                      theme === "dark"
+                        ? "text-white/70 hover:text-white"
+                        : "text-gray-700 hover:text-black"
+                    }`}
                   >
                     <FaGithub className="text-xl" />
                     <span className="group-hover/link:underline">Code</span>
@@ -139,7 +268,11 @@ export default function Projects() {
                     href={project.demo}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group/link font-medium"
+                    className={`flex items-center gap-2 transition-colors group/link font-medium ${
+                      theme === "dark"
+                        ? "text-white/70 hover:text-white"
+                        : "text-gray-700 hover:text-black"
+                    }`}
                   >
                     <FaExternalLinkAlt className="text-lg" />
                     <span className="group-hover/link:underline">Demo</span>
@@ -158,10 +291,16 @@ export default function Projects() {
           className="text-center mt-12"
         >
           <motion.a
-            href="#"
+            href="https://github.com/bhanu100141"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block px-8 py-4 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-colors shadow-md"
+            className={`inline-block px-8 py-4 rounded-lg font-medium transition-colors shadow-md ${
+              theme === "dark"
+                ? "bg-white text-black hover:bg-white/90"
+                : "bg-black text-white hover:bg-gray-800"
+            }`}
           >
             View All Projects →
           </motion.a>
