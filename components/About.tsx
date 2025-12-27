@@ -68,7 +68,7 @@ export default function About() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -top-1/2 -right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+          className="absolute -top-1/2 -right-1/4 w-96 h-96 bg-white/20 rounded-full blur-3xl"
         />
       </div>
 
@@ -96,7 +96,7 @@ export default function About() {
               initial={{ width: 0 }}
               animate={isInView ? { width: "100%" } : { width: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 mb-8 rounded-full"
+              className="h-1 bg-gradient-to-r from-white via-gray-400 to-white mb-8 rounded-full"
             />
 
             <h3 className="text-3xl font-bold gradient-text mb-6">
@@ -118,9 +118,9 @@ export default function About() {
               className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6"
             >
               With a strong foundation in{" "}
-              <span className="text-purple-400 font-semibold">HTML, CSS, JavaScript</span>,
+              <span className="text-white font-semibold">HTML, CSS, JavaScript</span>,
               and modern frameworks like{" "}
-              <span className="text-pink-400 font-semibold">React.js</span>,
+              <span className="text-gray-400 font-semibold">React.js</span>,
               I bring ideas to life through clean, efficient code and beautiful design.
             </motion.p>
 
@@ -143,7 +143,7 @@ export default function About() {
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : { scale: 0 }}
                     transition={{ delay: 1 + index * 0.1, type: "spring" }}
-                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-gray-300 text-sm font-medium"
+                    className="px-4 py-2 bg-gradient-to-r from-white/20 to-gray-400/20 border border-white/30 rounded-full text-gray-300 text-sm font-medium"
                   >
                     {trait}
                   </motion.span>
@@ -179,7 +179,7 @@ export default function About() {
                     <h4 className="text-xl font-semibold text-white group-hover:gradient-text transition-all">
                       {edu.degree}
                     </h4>
-                    <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium">
+                    <span className="px-3 py-1 bg-white/20 text-gray-300 rounded-full text-sm font-medium">
                       CGPA: {edu.cgpa}
                     </span>
                   </div>
@@ -190,7 +190,7 @@ export default function About() {
 
                 {/* Animated bottom border */}
                 <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500"
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-white to-gray-400"
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.3 }}

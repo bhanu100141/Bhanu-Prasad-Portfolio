@@ -67,7 +67,7 @@ export default function Skills() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -bottom-1/2 -left-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"
+          className="absolute -bottom-1/2 -left-1/4 w-96 h-96 bg-gray-400/20 rounded-full blur-3xl"
         />
       </div>
 
@@ -97,7 +97,7 @@ export default function Skills() {
               className="glass glass-hover p-6 md:p-8 rounded-2xl relative group"
             >
               {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-300" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 to-gray-400/0 group-hover:from-white/20 group-hover:to-gray-400/20 transition-all duration-300" />
 
               <div className="relative z-10">
                 <motion.div
@@ -129,7 +129,7 @@ export default function Skills() {
                       className="text-gray-300 flex items-center group/item"
                     >
                       <motion.span
-                        className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mr-3"
+                        className="w-2 h-2 bg-gradient-to-r from-white to-gray-400 rounded-full mr-3"
                         whileHover={{ scale: 1.5 }}
                       />
                       <span className="group-hover/item:text-white transition-colors">

@@ -19,12 +19,12 @@ export default function Sidebar() {
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed left-0 top-0 h-screen w-20 bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800 z-50 flex flex-col items-center py-8 shadow-2xl"
+      className="fixed left-0 top-0 h-screen w-20 bg-gradient-to-b from-gray-900 via-black to-gray-900 z-50 flex flex-col items-center py-8 shadow-2xl border-r border-white/10"
     >
       {/* Logo/Initials */}
       <motion.div
         whileHover={{ scale: 1.1, rotate: 5 }}
-        className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mb-12 cursor-pointer backdrop-blur-sm"
+        className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mb-12 cursor-pointer backdrop-blur-sm border border-white/20"
       >
         <span className="text-2xl font-bold text-white">BP</span>
       </motion.div>
@@ -48,13 +48,13 @@ export default function Sidebar() {
             }`}
             title={item.label}
           >
-            <span className="text-2xl">{item.icon}</span>
+            <span className="text-2xl filter grayscale">{item.icon}</span>
 
             {/* Tooltip */}
             <motion.span
               initial={{ opacity: 0, x: -10 }}
               whileHover={{ opacity: 1, x: 0 }}
-              className="absolute left-16 bg-white text-purple-700 px-3 py-1 rounded-md text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-lg"
+              className="absolute left-16 bg-white text-black px-3 py-1 rounded-md text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-lg"
             >
               {item.label}
             </motion.span>

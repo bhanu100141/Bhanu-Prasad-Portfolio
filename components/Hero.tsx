@@ -43,7 +43,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -55,7 +55,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"
         />
       </div>
 
@@ -75,15 +75,15 @@ export default function Hero() {
               whileHover={{ scale: 1.05, rotate: 5 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full blur-2xl opacity-75 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-400 to-white rounded-full blur-2xl opacity-30 animate-pulse" />
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden glass p-3 glow">
-                <div className="w-full h-full rounded-full overflow-hidden border-4 border-purple-400/30">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-white/30">
                   <Image
                     src="/profile-placeholder.svg"
                     alt="Bhanuprasad Vepakayala"
                     width={400}
                     height={400}
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover filter grayscale"
                     priority
                   />
                 </div>
@@ -112,7 +112,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-gray-300"
             >
-              A <span className="gradient-text font-semibold">Frontend Developer</span>{" "}
+              A <span className="text-white font-semibold">Frontend Developer</span>{" "}
               passionate about creating interactive applications and experiences on the web.
             </motion.div>
 
@@ -123,9 +123,9 @@ export default function Hero() {
               {/* Resume Button */}
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(147, 51, 234, 0.6)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-full font-medium text-lg shadow-lg"
+                className="px-10 py-4 bg-white text-black rounded-full font-medium text-lg shadow-lg hover:bg-gray-200 transition-colors"
               >
                 Resumé
               </motion.a>
@@ -138,7 +138,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-purple-500/20 transition-colors"
+                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-white/20 transition-colors"
                   title="LinkedIn"
                 >
                   💼
@@ -149,7 +149,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-purple-500/20 transition-colors"
+                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-white/20 transition-colors"
                   title="GitHub"
                 >
                   🐙
@@ -158,7 +158,7 @@ export default function Hero() {
                   href="mailto:bhanu100141@gmail.com"
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-purple-500/20 transition-colors"
+                  className="w-12 h-12 glass rounded-lg flex items-center justify-center text-2xl hover:bg-white/20 transition-colors"
                   title="Email"
                 >
                   📧

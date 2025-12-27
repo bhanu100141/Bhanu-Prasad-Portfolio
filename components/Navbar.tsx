@@ -63,7 +63,7 @@ export default function Navbar() {
                 >
                   {link.name}
                   <motion.span
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500"
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-white to-gray-400"
                     initial={{ scaleX: 0 }}
                     whileHover={{ scaleX: 1 }}
                     transition={{ duration: 0.3 }}

@@ -43,25 +43,25 @@ export default function Contact() {
       name: "GitHub",
       icon: "🐙",
       url: "https://github.com/bhanu100141",
-      color: "from-gray-500 to-gray-700",
+      color: "from-white to-gray-400",
     },
     {
       name: "LinkedIn",
       icon: "💼",
       url: "https://www.linkedin.com/in/bhanu-prasad-117152267",
-      color: "from-blue-500 to-blue-700",
+      color: "from-white to-gray-400",
     },
     {
       name: "Email",
       icon: "📧",
       url: "mailto:bhanu100141@gmail.com",
-      color: "from-purple-500 to-pink-500",
+      color: "from-white to-gray-400",
     },
     {
       name: "Phone",
       icon: "📱",
       url: "tel:+919392609951",
-      color: "from-green-500 to-emerald-500",
+      color: "from-white to-gray-400",
     },
   ];
 
@@ -101,7 +101,7 @@ export default function Contact() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl"
         />
       </div>
 
@@ -140,7 +140,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400 transition-all"
+                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-gray-400 transition-all"
                   placeholder="Your name"
                 />
               </motion.div>
@@ -159,7 +159,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400 transition-all"
+                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-gray-400 transition-all"
                   placeholder="your.email@example.com"
                 />
               </motion.div>
@@ -178,7 +178,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400 transition-all resize-none"
+                  className="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-gray-400 transition-all resize-none"
                   placeholder="Your message..."
                 />
               </motion.div>
@@ -188,7 +188,7 @@ export default function Contact() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full px-8 py-4 animated-gradient text-white rounded-lg font-medium glow disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-8 py-4 bg-white text-black rounded-lg font-medium glow disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-200 transition-colors"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">
@@ -286,7 +286,7 @@ export default function Contact() {
           className="mt-20 text-center text-gray-400"
         >
           <motion.div
-            className="h-px w-32 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mb-6"
+            className="h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ delay: 1.3, duration: 0.8 }}

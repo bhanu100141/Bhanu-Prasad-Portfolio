@@ -16,7 +16,7 @@ export default function Projects() {
       technologies: ["Next.js", "TypeScript", "MongoDB", "Stripe"],
       github: "#",
       demo: "#",
-      gradient: "from-blue-500 to-cyan-500",
+      gradient: "from-white to-gray-400",
     },
     {
       title: "Social Media Dashboard",
@@ -25,7 +25,7 @@ export default function Projects() {
       technologies: ["React", "Node.js", "PostgreSQL", "Chart.js"],
       github: "#",
       demo: "#",
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-white to-gray-400",
     },
     {
       title: "AI Task Manager",
@@ -34,7 +34,7 @@ export default function Projects() {
       technologies: ["Next.js", "Express", "Socket.io", "OpenAI"],
       github: "#",
       demo: "#",
-      gradient: "from-orange-500 to-red-500",
+      gradient: "from-white to-gray-400",
     },
   ];
 
